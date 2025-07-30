@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add ToDo Task - ToDo LiSt</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/addtask.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div th:replace="~{fragments/menu :: menu}"></div>
+
+      <div class="header" th:fragment="header">
+        <div class="logo-section">
+          <img th:src="@{/images/logo.png}" alt="Todo List logo" class="logo">
+          <div class="text-section">
+            <h1>ToDo Rails</h1>
+            <p>Keep your goals on Track</p>
+          </div>
+
+          <div class="heading-section">
+            <img th:src="@{/images/add.png}"/>
+            Add TODO
+          </div>
+        </div>
+        <div class="auth-links">
+          <a th:href="@{/logout}">Logout</a>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2>Add TODO Task</h2>
+
+        <div th:if="${successMessage}" class="client-alert flash-alert-success">
+          <p th:text="${successMessage}"></p>
+        </div>
+        <div th:if="${errorMessage}" class="client-alert flash-alert-danger">
+          <p th:text="${errorMessage}"></p>
+        </div>
+
+        <div id="error-messages-client" class="client-alert flash-alert-danger" style="display: none;">
+          <h2>Please correct the following Errors :</h2>
+          <ul id="error-list"></ul>
+        </div>
+
+        <form action="/addtask" method="post" th:object="${task}" class="task-form" onsubmit="return validateForm()">
+          <label for="todoName">ToDo Name</label>
+          <input type="text" id="todoName" th:field="*{title}" placeholder="Name Here....">
+          <p class="error-message" id="todoNameError"></p>
+
+          <label for="description">ToDo Task Description</label>
+          <textarea id="description" placeholder="Enter Description....." rows="5" th:field="*{description}"></textarea>
+          <p class="error-message" id="descriptionError"></p>
+
+          <label for="priority">Priority</label>
+          <select id="priority" th:field="*{priority}">
+            <option value="">Select Priority</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+          <p class="error-message" id="priorityError"></p>
+
+          <label for="dueDate">Due Date</label>
+          <input type="date" id="dueDate" th:field="*{dueDate}" placeholder="YYYY-MM-DD">
+          <p class="error-message" id="dueDateError"></p>
+
+          <label for="type">Type</label>
+          <select id="type" th:field="*{type}">
+            <option value="">Select Type</option>
+            <option value="official">Official</option>
+            <option value="family">Family</option>
+            <option value="personal">Personal</option>
+          </select>
+          <p class="error-message" id="typeError"></p>
+
+          <div class="button-group">
+            <button type="submit" class="btn btn-create">Create Task</button>
+            <button type="button" id="btn-cancel" class="btn btn-cancel" onclick="window.location='/dashboard'">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+
+    <script th:src="@{/js/menu.js}"></script>
+    <script th:src="@{/js/addtask.js}"></script>
+  </body>
+
+</html>
