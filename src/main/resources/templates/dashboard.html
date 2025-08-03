@@ -173,7 +173,7 @@
           <div th:if="${#lists.isEmpty(allTasks)}">
             <p>Nothing to show here...</p>
           </div>
-          <div th:each="task, stat : ${allTasks}" class="task-item" th:classappend="${stat.index % 2 == 0} ? 'alt-row'">
+          <div th:each="task, stat : ${allTasks}" class="task-item" th:classappend="${task.completed} ? 'completed-task' : 'alt-row'">
             <div class="task-info">
               <p><strong>Title:</strong> <span th:text="${task.title}">Task Title</span></p>
               <p><strong>Description:</strong> <span th:text="${task.shortDescription}">Task Description</span></p>
