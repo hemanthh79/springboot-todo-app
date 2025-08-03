@@ -15,6 +15,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
 
     List<Task> findByUser(User user);
 
+    List<Task> findByDueDateBetween(LocalDate dateAdded, LocalDate dueDate);
 
     Task findByUserAndId(User user, Integer id);
 
