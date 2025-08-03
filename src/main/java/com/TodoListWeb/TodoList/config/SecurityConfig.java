@@ -26,15 +26,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests(authorize -> authorize
-                        /** TODO 1:  allow access to static resource "/css/**" and
-                         *           "/register" without logging in
-                         */
-                        .requestMatchers( "/register", "/css/**", "/js/**").permitAll()
-                        // allow access to static resources
-                        .requestMatchers("/js/**", "/images/**").permitAll()
-                        // allow access to register, login, terms and index without logging in
-                        .requestMatchers( "/","/login","/terms", "/custom-error").permitAll()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers( "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/images/**").permitAll()
+                        .requestMatchers("/register", "/", "/login", "/terms", "/custom-error").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
