@@ -27,9 +27,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests(authorize -> authorize
-                        /** TODO 1:  allow access to static resource "/css/**" and
-                         *           "/register" without logging in
-                         */
                         .requestMatchers( "/register", "/css/**", "/js/**").permitAll()
                         // allow access to static resources
                         .requestMatchers("/js/**", "/images/**").permitAll()
