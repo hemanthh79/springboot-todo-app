@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .requestMatchers( "/","/login","/terms", "/custom-error").permitAll()
                         .anyRequest().authenticated()
                 )
+
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/dashboard")
