@@ -3,8 +3,6 @@
     width: 100%;
     max-width: 600px;
     margin: 25px auto 25px auto;
-    /** TODO 2: Put margin of 25px on "top" and "bottom" and "auto" on left and right **/
-
 
     padding: 20px;
     background-color: #E8F8FD;  /* Light background color */

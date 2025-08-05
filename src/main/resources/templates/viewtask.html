@@ -45,20 +45,6 @@
 
       <p>
         <strong>Completed:</strong>
-        <!-- TODO 17: add a "${th:text="${task.completed ? 'Yes' : 'No'}"
-                        attribute to the span element below
-                        to display
-                        "Yes" if the task completion status is true and
-                        "No" if the task completion status is false
-                        by using the ternary operator.
-                  -->
-
-
-        <!-- TODO 19: ensure that the correct class of "task-status.completed"
-                    or "task-status.pending" is applied using the "th:class"
-                    along with the ternary operator on "task.completed"
-                   -->
-
         <span th:text="${task.completed ? 'Yes' : 'No'}" th:class="${task.completed ? 'task-status completed' : 'task-status pending'}"></span>
 
       </p>

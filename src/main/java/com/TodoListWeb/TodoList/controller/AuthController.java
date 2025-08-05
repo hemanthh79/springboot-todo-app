@@ -32,9 +32,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user, Model model,
-                               RedirectAttributes redirectAttributes) {
-
+    public String registerUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes) {
         try {
             // Register the user in the service
             User userReturned = userService.registerUser(user);
