@@ -37,8 +37,8 @@ public class TaskController {
         String formattedDate = DateTimeFormatter.ofPattern("MM/dd/yyyy").format(localDateTime);
         model.addAttribute("serverTime", LocalDateTime.now());
 
-        model.addAttribute("completedCount", taskService.countByCompleted(true));
-        model.addAttribute("pendingCount", taskService.countByCompleted(false));
+        model.addAttribute("completedCount", taskService.countByCompletedAndUserId(true));
+        model.addAttribute("pendingCount", taskService.countByCompletedAndUserId(false));
         return "dashboard";
     }
 

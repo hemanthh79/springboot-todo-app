@@ -159,7 +159,10 @@ public class TaskService {
         return false;
     }
 
-    public int countByCompleted(boolean completedStatus) {
-        return taskRepository.countByCompleted(completedStatus);
+    public int countByCompletedAndUserId(boolean completedStatus) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = userRepository.findByUsername(authentication.getName());
+        return taskRepository.countByCompletedAndUserId(completedStatus, user.getId());
     }
 }

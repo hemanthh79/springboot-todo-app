@@ -59,6 +59,14 @@ public class User implements UserDetails {
         return UserDetails.super.isAccountNonExpired();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean isAccountNonLocked() {
         return UserDetails.super.isAccountNonLocked();

@@ -21,5 +21,5 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
 
     Task getById(Integer id);
 
-    int countByCompleted(boolean completed);
+    int countByCompletedAndUserId(boolean completed, Integer id);
 }
